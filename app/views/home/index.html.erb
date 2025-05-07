@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <p>✅ ログイン中: <%= current_user.email %></p>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<% else %>
+  <p>❌ 未ログイン</p>
+  <%= link_to 'ログイン', new_user_session_path %> |
+  <%= link_to '新規登録', new_user_registration_path %>
+<% end %>
+
+<% flash.each do |key, msg| %>
+  <p><%= "#{key}: #{msg}" %></p>
+<% end %>
